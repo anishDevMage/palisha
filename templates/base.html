@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+
+    {% load static %}
+
+    {% block imports %}
+
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {% endblock %}
+
+    <meta charset="UTF-8">
+    <title>{% block title %}Hungry Heroes Store{% endblock %}</title>
+    <!-- Include your CSS stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
+
+
+
+</head>
+<body class="body-content" >
+    <!-- Include the header -->
+    {% include 'header.html' %}
+    <!-- Main content area -->
+    <div class="main-content">
+        <!-- Content specific to each page will go here -->
+        {% block content %}
+        <p> GOTTA FILL IN SOMETHING HERE </p>
+        {% endblock %}
+    </div>
+
+    <!-- Include the footer -->
+    {% include 'footer.html' %}
+
+    <!-- Include your JavaScript files -->
+    <script src="#"></script>
+</body>
+</html>
