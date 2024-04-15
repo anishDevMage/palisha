@@ -310,3 +310,72 @@
 
 
 /* FOOTER ENDS */
+
+
+
+
+
+/* HOMEPAGE STARTS */
+
+.carousel-container{
+    border: 2px solid red;
+}
+
+.carousel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel p{
+    color: white;
+}
+
+
+.carousel-select{
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide the scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide the scrollbar for IE/Edge */
+}
+
+.carousel-select::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for Chrome and Safari */
+}
+
+.carousel-track {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.carousel-item {
+    display: flex;
+    flex: 0 0 100%;
+    margin-right: 0px; /* Adjust margin as needed */
+}
+
+.carousel-item img {
+    width: 100%; /* Ensure images fill their container */
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute; /* Position the buttons absolutely within the carousel-select */
+    top: 50%; /* Align vertically at the center */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+    background-color: #333; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    padding: 10px; /* Add some padding */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.carousel-prev {
+    left: 0; /* Position the left arrow at the start */
+}
+
+.carousel-next {
+    right: 0; /* Position the right arrow at the end */
+}
+/* HOMEPAGE ENDS */

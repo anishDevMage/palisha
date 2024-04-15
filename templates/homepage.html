@@ -1,0 +1,103 @@
+{% extends './base.html' %}
+
+
+{% block content %}
+
+{% load static %}
+
+<div class="container" >
+    <div class="carousel">
+        <div class="carousel-select w-75 mx-auto" >
+                <button class="carousel-prev">&lt;</button>
+
+                <div class="carousel-track d-flex flex-nowrap ">
+                <div class="carousel-item">
+                <p> TEST </p>
+    <!--                <img src="{% static 'assets/logo.jpg' %}" alt="Slide 1">-->
+                </div>
+                <div class="carousel-item">
+                <p> CHANGING </p>
+    <!--                <img src="{% static 'img/slide2.jpg' %}" alt="Slide 2">-->
+                </div>
+                <div class="carousel-item">
+                <p> |NTO </p>
+    <!--                <img src="{% static 'img/slide3.jpg' %}" alt="Slide 3">-->
+                </div>
+                <div class="carousel-item">
+                <p> SOMETHING </p>
+    <!--                <img src="{% static 'img/slide3.jpg' %}" alt="Slide 3">-->
+                </div>
+                <div class="carousel-item">
+                <p> NEW </p>
+    <!--                <img src="{% static 'img/slide3.jpg' %}" alt="Slide 3">-->
+                </div>
+                <div class="carousel-item">
+                <p> SOMETHING </p>
+    <!--                <img src="{% static 'img/slide3.jpg' %}" alt="Slide 3">-->
+                </div>
+
+            </div>
+
+                <button class="carousel-next">&gt;</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded',
+
+        function (){
+            console.log('DOM CONTENT LOADED');
+            let currentIndex = 0;
+
+            const carousel = document.querySelector('.carousel');
+            const prevBtn = carousel.querySelector('.carousel-prev');
+            const nextBtn = carousel.querySelector('.carousel-next');
+            const carouselItem = carousel.querySelector('.carousel-item');
+            const carouselItems = carousel.querySelectorAll('.carousel-item');
+            const carouselTrack = carousel.querySelector('.carousel-track');
+
+            updateSlide();
+
+            prevBtn.addEventListener('click', () => {
+                //currentIndex = Math.max(currentIndex - 1, 0);
+                currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+                console.log(currentIndex);
+                updateSlide();
+            })
+
+            nextBtn.addEventListener('click', () => {
+                //currentIndex = Math.min(currentIndex + 1, carouselItems.length - 1);
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                updateSlide();
+            })
+
+
+            function updateSlide() {
+                const slideWidth = carouselItems[currentIndex].offsetWidth;
+                const totalWidth = slideWidth * carouselItems.length;
+
+                // Calculate the adjusted translation
+                const adjustedTranslateX = -(currentIndex * slideWidth) % totalWidth;
+
+                // If moving from last to first item, adjust the translation
+                if (currentIndex === carouselItems.length - 1) {
+                    carouselTrack.style.transition = 'none'; // Disable transition
+                    carouselTrack.style.transform = `translateX(${adjustedTranslateX}px)`;
+                    setTimeout(() => {
+                        carouselTrack.style.transition = ''; // Re-enable transition
+                        carouselTrack.style.transform = `translateX(0)`;
+                    }, 0);
+                } else {
+                    carouselTrack.style.transform = `translateX(${adjustedTranslateX}px)`;
+                }
+            }
+
+        })
+
+
+</script>
+
+{% endblock %}
