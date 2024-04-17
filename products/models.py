@@ -24,6 +24,8 @@ class Product(models.Model):
     availability_status = models.CharField(max_length=100)
     popularity = models.CharField(max_length=100, blank=True, null=True)
 
+    def __str__(self):
+        return self.name
 
 class ProductImage(models.Model):
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
@@ -41,3 +43,6 @@ class Vendor(models.Model):
     specialty = models.CharField(max_length=100)
     years_in_business = models.IntegerField()
     customer_rating = models.DecimalField(max_digits=3, decimal_places=2)
+
+    def __str__(self):
+        return self.name
